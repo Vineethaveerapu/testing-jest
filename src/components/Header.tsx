@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import logo from '@/app/assets/logo.png';
-
 interface HeaderProps {
   className?: string;
 }
@@ -16,12 +14,12 @@ const pageLinks: { name: string; href: string }[] = [
     href: '/',
   },
   {
-    name: 'Services',
-    href: '/services',
+    name: 'Our Services',
+    href: '/our-services',
   },
   {
-    name: 'Contact',
-    href: '/contact',
+    name: 'Contact Us',
+    href: '/contact-us',
   },
 ];
 
@@ -34,9 +32,9 @@ const Header = ({ className = '' }: HeaderProps) => {
 
   return (
     <header
-      className={`${className} flex justify-between items-center gap-4 flex-wrap-reverse px-16 py-4`}>
+      className={`${className} flex justify-between items-center gap-4 flex-wrap-reverse`}>
       <Image
-        src={logo}
+        src="/logo.png"
         alt="logo"
         className="logo"
         width={50}
