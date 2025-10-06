@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest src/__tests__/components",
+    "test:integration": "jest src/__tests__/integration"
   },
   "dependencies": {
     "next": "15.5.4",
