@@ -36,6 +36,6 @@ export interface MediaCardProps extends BaseComponentProps {
 }
 
 export interface TextCardProps extends BaseComponentProps {
-  title?: string | null;
-  children?: React.ReactNode | null;
+  title: string;
+  children?: React.ReactNode;
 }
