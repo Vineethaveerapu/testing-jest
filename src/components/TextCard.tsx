@@ -1,8 +1,4 @@
-interface TextCardProps {
-  className?: string;
-  title: string;
-  children: React.ReactNode;
-}
+import type { TextCardProps } from '@/types';
 
 const TextCard = ({ className = '', title, children }: TextCardProps) => {
   return (

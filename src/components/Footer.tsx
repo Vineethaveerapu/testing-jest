@@ -1,10 +1,7 @@
 import Link from 'next/link';
+import type { BaseComponentProps } from '@/types';
 
-interface FooterProps {
-  className?: string;
-}
-
-const Footer = ({ className = '' }: FooterProps) => {
+const Footer = ({ className = '' }: BaseComponentProps) => {
   return (
     <footer className={`${className} space-y-6`}>
       <div className="flex justify-between gap-4 flex-wrap">

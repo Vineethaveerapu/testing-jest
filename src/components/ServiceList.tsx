@@ -1,23 +1,13 @@
 import ServiceItem from './ServiceItem';
-import { type Service } from '@/app/page';
+import type { ServiceListProps, Service } from '@/types';
 
-interface ServiceListProps {
-  className?: string;
-  items: Service[];
-  addSelectedService?: (service: Service) => void;
-  removeSelectedService?: (service: Service) => void;
-  isSelectedList?: boolean;
-}
-
-const ServiceList = (props: ServiceListProps) => {
-  const {
-    className = '',
-    items,
-    addSelectedService,
-    removeSelectedService,
-    isSelectedList = false,
-  } = props;
-
+const ServiceList = ({
+  className = '',
+  items,
+  addSelectedService,
+  removeSelectedService,
+  isSelectedList = false,
+}: ServiceListProps) => {
   const handleClickService = (service: Service) => {
     if (isSelectedList) {
       removeSelectedService?.(service);

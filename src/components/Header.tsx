@@ -3,14 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { BaseComponentProps } from '@/types';
 
 import { pageLinks } from '@/data';
 
-interface HeaderProps {
-  className?: string;
-}
-
-const Header = ({ className = '' }: HeaderProps) => {
+const Header = ({ className = '' }: BaseComponentProps) => {
   const pathname = usePathname();
 
   const isActive = (page: string) => {

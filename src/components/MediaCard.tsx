@@ -1,13 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-
-interface MediaCardProps {
-  className?: string;
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-}
+import type { MediaCardProps } from '@/types';
 
 const MediaCard = ({
   className = '',

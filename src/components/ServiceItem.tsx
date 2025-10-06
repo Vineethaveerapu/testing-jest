@@ -1,15 +1,12 @@
-import { type Service } from '@/app/page';
+import type { ServiceItemProps } from '@/types';
 
-export interface ServiceItemProps {
-  id: number;
-  title: string;
-  description: string;
-  isSelectedList: boolean;
-  handleClickService: (service: Service) => void;
-}
-
-const ServiceItem = (props: ServiceItemProps) => {
-  const { id, title, description, isSelectedList, handleClickService } = props;
+const ServiceItem = ({
+  id,
+  title,
+  description,
+  isSelectedList,
+  handleClickService,
+}: ServiceItemProps) => {
   return (
     <div>
       <h4>{title}</h4>
