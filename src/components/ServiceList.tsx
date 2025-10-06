@@ -1,13 +1,15 @@
 import ServiceItem from './ServiceItem';
 import type { ServiceListProps, Service } from '@/types';
 
-const ServiceList = ({
-  className = '',
-  items,
-  addSelectedService,
-  removeSelectedService,
-  isSelectedList = false,
-}: ServiceListProps) => {
+const ServiceList = (props: ServiceListProps) => {
+  const {
+    className,
+    items,
+    addSelectedService,
+    removeSelectedService,
+    isSelectedList,
+  } = props;
+
   const handleClickService = (service: Service) => {
     if (isSelectedList) {
       removeSelectedService?.(service);
@@ -24,7 +26,7 @@ const ServiceList = ({
           id={item.id}
           title={item.title}
           description={item.description}
-          isSelectedList={isSelectedList}
+          isSelectedList={isSelectedList ?? false}
           handleClickService={handleClickService}
         />
       ))}

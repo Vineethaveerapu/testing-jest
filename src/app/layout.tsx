@@ -29,9 +29,11 @@ const RootLayout = ({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
-        <Header className="px-16 py-4" />
-        <main className="flex-grow px-16 py-4">{children}</main>
-        <Footer className="px-16 py-4" />
+        <Header className="px-4 sm:px-6 lg:px-8 xl:px-12 py-4" />
+        <main className="flex-grow px-4 sm:px-6 lg:px-8 xl:px-12 py-4">
+          {children}
+        </main>
+        <Footer className="px-4 sm:px-6 lg:px-8 xl:px-12 py-4" />
       </body>
     </html>
   );

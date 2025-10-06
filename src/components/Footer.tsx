@@ -18,7 +18,7 @@ const Footer = ({ className = '' }: BaseComponentProps) => {
           <ul className="list-none list-inside">
             <li>Email: info@urbanmali.com</li>
             <li>Phone: 077 1234567</li>
-            <li>Address: 123 Urban Mali Street</li>
+            <li>Address: 123 Garden Street</li>
           </ul>
         </div>
 
@@ -45,7 +45,7 @@ const Footer = ({ className = '' }: BaseComponentProps) => {
       </div>
 
       <div className="text-center border-t-2 border-gray-300 py-4">
-        <p>&copy; 2025 Urban Mali. All rights reserved.</p>
+        <p>&copy; 2025 Garden. All rights reserved.</p>
       </div>
     </footer>
   );
