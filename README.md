@@ -1,6 +1,6 @@
-# Garden Services Website
+# Garden Services Website - Testing Learning Project
 
-A modern web application for professional garden services. Built with Next.js 15, React, and TypeScript.
+A modern web application for professional garden services. Built with Next.js 15, React, and TypeScript. This project is designed for students learning testing fundamentals.
 
 ## Features
 
@@ -12,29 +12,20 @@ A modern web application for professional garden services. Built with Next.js 15
 ## Getting Started
 
 ```bash
-npm run dev
-npm run test
+# Install dependencies
+pnpm install
+
+# Run the development server
+pnpm run dev
+
+# Run tests
+pnpm run test
+
+# Run tests with coverage
+pnpm run test -- --coverage
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
-
-## Testing
-
-```bash
-# Run all tests
-npm run test
-
-# Run tests with coverage
-npm run test -- --coverage
-```
-
-### Test Coverage
-
-- **Footer**: Navigation and content
-- **Header**: Logo and navigation
-- **TextCard**: Conditional rendering
-- **ServiceItem**: Content and interactions
-- **ServiceList**: Service rendering and user actions
 
 ## Documentation
 
