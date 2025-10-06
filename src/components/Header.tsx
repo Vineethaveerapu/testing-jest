@@ -4,24 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { pageLinks } from '@/data';
+
 interface HeaderProps {
   className?: string;
 }
-
-const pageLinks: { name: string; href: string }[] = [
-  {
-    name: 'Home',
-    href: '/',
-  },
-  {
-    name: 'Our Services',
-    href: '/our-services',
-  },
-  {
-    name: 'Contact Us',
-    href: '/contact-us',
-  },
-];
 
 const Header = ({ className = '' }: HeaderProps) => {
   const pathname = usePathname();
