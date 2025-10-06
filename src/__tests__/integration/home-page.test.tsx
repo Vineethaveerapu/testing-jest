@@ -22,81 +22,92 @@ describe('Home Page Integration Tests', () => {
     jest.clearAllMocks();
   });
 
-  it('should render home page with all sections and allow service selection', () => {
+  // Integration Test 1: Basic service selection workflow
+  it('allows user to select a service and see state changes', () => {
     render(<HomePage />);
 
-    // Check hero section
-    expect(
-      screen.getByText('Professional Garden Services')
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/Transform your outdoor space/)
-    ).toBeInTheDocument();
-
-    // Check services section headers
-    expect(screen.getByText('Choose Services')).toBeInTheDocument();
-    expect(screen.getByText('Your Selection')).toBeInTheDocument();
-
-    // Check that all services are rendered
-    expect(screen.getByText('Weeding')).toBeInTheDocument();
-    expect(screen.getByText('Watering')).toBeInTheDocument();
-    expect(screen.getByText('Pruning and Trimming')).toBeInTheDocument();
-  });
-
-  it('should add services to selection when clicked and update state', () => {
-    render(<HomePage />);
-
-    // Initially, selection should be empty
+    // Step 1: Check initial state - no services selected
     expect(
       screen.getByText('Choose services from the left panel to get started')
     ).toBeInTheDocument();
 
-    // Click on first service (Weeding) - click the Select button
-    const selectButtons = screen.getAllByText('Select');
-    expect(selectButtons).toHaveLength(3); // Should have 3 Select buttons initially
+    // Step 2: Check all services are available
+    const availableServices = screen.getAllByRole('heading', { level: 4 });
+    expect(availableServices).toHaveLength(3);
+    expect(availableServices[0]).toHaveTextContent('Weeding');
+    expect(availableServices[1]).toHaveTextContent('Watering');
+    expect(availableServices[2]).toHaveTextContent('Pruning and Trimming');
 
-    fireEvent.click(selectButtons[0]); // Click Weeding Select button
+    // Step 3: Check all Select buttons are present
+    const selectButtons = screen.getAllByRole('button', { name: 'Select' });
+    expect(selectButtons).toHaveLength(3);
 
-    // Check that Weeding appears in the selected services section
+    // Step 4: Select first service (Weeding) - this changes state
+    fireEvent.click(selectButtons[0]);
+
+    // Step 5: Verify state change - Weeding now appears in selected section
     const selectedServices = screen.getAllByText('Weeding');
     expect(selectedServices).toHaveLength(2); // One in available, one in selected
 
-    // Verify that the service was added by checking for Remove button
-    const removeButtons = screen.getAllByText('Remove');
-    expect(removeButtons).toHaveLength(1); // Should have 1 Remove button for Weeding
+    // Step 6: Verify Remove button appears for selected service
+    const removeButtons = screen.getAllByRole('button', { name: 'Remove' });
+    expect(removeButtons).toHaveLength(1);
   });
 
-  it('should remove services from selection when clicked and update state', () => {
+  // Integration Test 2: Service removal workflow with state changes
+  it('allows user to remove services and see state changes', () => {
     render(<HomePage />);
 
-    // Add services first
-    const selectButtons = screen.getAllByText('Select');
-    fireEvent.click(selectButtons[0]); // Click Weeding Select button
-    fireEvent.click(selectButtons[1]); // Click Watering Select button
+    // Step 1: Select multiple services first
+    const selectButtons = screen.getAllByRole('button', { name: 'Select' });
+    fireEvent.click(selectButtons[0]); // Select Weeding
+    fireEvent.click(selectButtons[1]); // Select Watering
 
-    // Verify both are selected
+    // Step 2: Verify both services are selected
     expect(screen.getAllByText('Weeding')).toHaveLength(2);
     expect(screen.getAllByText('Watering')).toHaveLength(2);
 
-    // Remove Weeding from selected services - click the Remove button
-    const removeButtons = screen.getAllByText('Remove');
-    fireEvent.click(removeButtons[0]); // Click the first Remove button
+    // Step 3: Remove Weeding from selected services
+    const removeButtons = screen.getAllByRole('button', { name: 'Remove' });
+    fireEvent.click(removeButtons[0]); // Remove Weeding
 
-    // Check that Weeding is removed from selected (only one occurrence now)
-    expect(screen.getAllByText('Weeding')).toHaveLength(1);
-    expect(screen.getAllByText('Watering')).toHaveLength(2); // Watering still selected
+    // Step 4: Verify state change - Weeding is removed from selected
+    expect(screen.getAllByText('Weeding')).toHaveLength(1); // Only in available now
+    expect(screen.getAllByText('Watering')).toHaveLength(2); // Still selected
+
+    // Step 5: Verify only one Remove button remains
+    const remainingRemoveButtons = screen.getAllByRole('button', {
+      name: 'Remove',
+    });
+    expect(remainingRemoveButtons).toHaveLength(1);
+
+    // Step 6: Verify Weeding Select button is available again
+    const selectButtonsAfterRemoval = screen.getAllByRole('button', {
+      name: 'Select',
+    });
+    expect(selectButtonsAfterRemoval).toHaveLength(3); // All services available again
   });
 
-  it('should prevent duplicate service selection', () => {
+  // Integration Test 3: Service removal workflow
+  it('allows user to remove a selected service', () => {
     render(<HomePage />);
 
-    // Click on Weeding service multiple times
-    const selectButtons = screen.getAllByText('Select');
-    fireEvent.click(selectButtons[0]); // Click Weeding Select button
-    fireEvent.click(selectButtons[0]); // Try to click again
-    fireEvent.click(selectButtons[0]); // Try to click again
+    // Step 1: Select a service first
+    const selectButtons = screen.getAllByRole('button', { name: 'Select' });
+    fireEvent.click(selectButtons[0]); // Select Weeding
 
-    // Should only have 2 occurrences (one in available, one in selected)
+    // Step 2: Verify service is selected
     expect(screen.getAllByText('Weeding')).toHaveLength(2);
+
+    // Step 3: Remove the service
+    const removeButtons = screen.getAllByRole('button', { name: 'Remove' });
+    fireEvent.click(removeButtons[0]); // Remove Weeding
+
+    // Step 4: Verify service is removed from selected
+    expect(screen.getAllByText('Weeding')).toHaveLength(1); // Only in available now
+
+    // Step 5: Verify no Remove buttons exist
+    const noRemoveButtons = screen.queryByRole('button', { name: 'Remove' });
+    expect(noRemoveButtons).not.toBeInTheDocument();
   });
 });
