@@ -1,35 +1,10 @@
 'use client';
 import ServiceList from '@/components/ServiceList';
 import { useState } from 'react';
+import type { Service } from '@/types';
+import { ourServices } from '@/data';
 
-export interface Service {
-  id: number;
-  title: string;
-  description: string;
-}
-
-export const ourServices: Service[] = [
-  {
-    id: 1,
-    title: 'Weeding',
-    description:
-      'Weeding is the process of removing unwanted plants from a garden or lawn. It is a necessary part of maintaining a healthy garden and lawn.',
-  },
-  {
-    id: 2,
-    title: 'Watering',
-    description:
-      'Watering is the process of adding water to a garden or lawn. It is a necessary part of maintaining a healthy garden and lawn.',
-  },
-  {
-    id: 3,
-    title: 'Pruning and Trimming',
-    description:
-      'Pruning and trimming is the process of cutting back plants to maintain a healthy garden and lawn.',
-  },
-];
-
-export default function Page() {
+const Page = () => {
   const [selectedServices, setSelectedServices] = useState<Service[]>([]);
 
   const addSelectedService = (service: Service) => {
@@ -71,4 +46,6 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};
+
+export default Page;

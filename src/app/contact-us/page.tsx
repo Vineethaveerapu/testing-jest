@@ -5,7 +5,7 @@ export const metadata = {
   description: 'Contact Us page',
 };
 
-export default function Page() {
+const Page = () => {
   return (
     <div className="space-y-4">
       <h1>Contact Us</h1>
@@ -40,4 +40,6 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};
+
+export default Page;
