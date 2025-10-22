@@ -1,8 +1,8 @@
-import TextCard from '@/components/TextCard';
+import TextCard from "@/components/TextCard";
 
 export const metadata = {
-  title: 'Contact Us',
-  description: 'Contact Us page',
+  title: "Contact Us",
+  description: "Contact Us page"
 };
 
 const Page = () => {

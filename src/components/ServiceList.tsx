@@ -1,5 +1,5 @@
-import ServiceItem from './ServiceItem';
-import type { ServiceListProps, Service } from '@/types';
+import ServiceItem from "./ServiceItem";
+import type { ServiceListProps, Service } from "@/types";
 
 const ServiceList = (props: ServiceListProps) => {
   const {
@@ -7,7 +7,7 @@ const ServiceList = (props: ServiceListProps) => {
     items,
     addSelectedService,
     removeSelectedService,
-    isSelectedList,
+    isSelectedList
   } = props;
 
   const handleClickService = (service: Service) => {

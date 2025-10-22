@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type { BaseComponentProps } from '@/types';
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type { BaseComponentProps } from "@/types";
 
-import { pageLinks } from '@/data';
+import { pageLinks } from "@/data";
 
-const Header = ({ className = '' }: BaseComponentProps) => {
+const Header = ({ className = "" }: BaseComponentProps) => {
   const pathname = usePathname();
 
   const isActive = (page: string) => {
@@ -16,7 +16,8 @@ const Header = ({ className = '' }: BaseComponentProps) => {
 
   return (
     <header
-      className={`${className} flex justify-between items-center gap-4 flex-wrap-reverse`}>
+      className={`${className} flex justify-between items-center gap-4 flex-wrap-reverse`}
+    >
       <Image
         src="/logo.png"
         alt="logo"
@@ -31,8 +32,9 @@ const Header = ({ className = '' }: BaseComponentProps) => {
             key={link.name}
             href={link.href}
             className={`${
-              isActive(link.href) ? 'underline underline-offset-4' : ''
-            }`}>
+              isActive(link.href) ? "underline underline-offset-4" : ""
+            }`}
+          >
             {link.name}
           </Link>
         ))}

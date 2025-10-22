@@ -1,4 +1,4 @@
-import type { ServiceItemProps } from '@/types';
+import type { ServiceItemProps } from "@/types";
 
 const ServiceItem = (props: ServiceItemProps) => {
   const { id, title, description, isSelectedList, handleClickService } = props;
@@ -14,10 +14,11 @@ const ServiceItem = (props: ServiceItemProps) => {
           onClick={() => handleClickService({ title, description, id })}
           className={`ml-4 px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200 ${
             isSelectedList
-              ? 'bg-red-100 text-red-700 hover:bg-red-200 border border-red-200'
-              : 'bg-green-100 text-green-700 hover:bg-green-200 border border-green-200'
-          }`}>
-          {isSelectedList ? 'Remove' : 'Select'}
+              ? "bg-red-100 text-red-700 hover:bg-red-200 border border-red-200"
+              : "bg-green-100 text-green-700 hover:bg-green-200 border border-green-200"
+          }`}
+        >
+          {isSelectedList ? "Remove" : "Select"}
         </button>
       </div>
     </div>

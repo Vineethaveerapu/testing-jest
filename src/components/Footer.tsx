@@ -1,15 +1,14 @@
-import Link from 'next/link';
-import type { BaseComponentProps } from '@/types';
+import Link from "next/link";
+import type { BaseComponentProps } from "@/types";
 
-const Footer = ({ className = '' }: BaseComponentProps) => {
+const Footer = ({ className = "" }: BaseComponentProps) => {
   return (
     <footer className={`${className} space-y-6`}>
       <div className="flex justify-between gap-4 flex-wrap">
         <div className="space-y-2">
           <h3 className="text-2xl font-bold">About Us</h3>
           <p className="max-w-md">
-            We are dedicated to providing the best gardening solutions and tips
-            for your green space.
+            We are dedicated to providing the best gardening solutions
           </p>
         </div>
 
@@ -25,19 +24,13 @@ const Footer = ({ className = '' }: BaseComponentProps) => {
         <div className="space-y-2">
           <h3 className="text-2xl font-bold">Follow Us</h3>
           <nav className="flex flex-col">
-            <Link
-              href="/facebook"
-              className="text-blue-500">
+            <Link href="/facebook" className="text-blue-500">
               Facebook
             </Link>
-            <Link
-              href="/instagram"
-              className="text-blue-500">
+            <Link href="/instagram" className="text-blue-500">
               Instagram
             </Link>
-            <Link
-              href="/twitter"
-              className="text-blue-500">
+            <Link href="/twitter" className="text-blue-500">
               Twitter
             </Link>
           </nav>

@@ -1,8 +1,8 @@
-'use client';
-import ServiceList from '@/components/ServiceList';
-import { useState } from 'react';
-import type { Service } from '@/types';
-import { ourServices } from '@/data';
+"use client";
+import ServiceList from "@/components/ServiceList";
+import { useState } from "react";
+import type { Service } from "@/types";
+import { ourServices } from "@/data";
 
 const Page = () => {
   const [selectedServices, setSelectedServices] = useState<Service[]>([]);

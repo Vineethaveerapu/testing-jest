@@ -1,9 +1,10 @@
-import type { TextCardProps } from '@/types';
+import type { TextCardProps } from "@/types";
 
-const TextCard = ({ className = '', title, children }: TextCardProps) => {
+const TextCard = ({ className = "", title, children }: TextCardProps) => {
   return (
     <div
-      className={`${className} text-center p-8 bg-gray-50 rounded-lg transition-transform duration-300 ease-in-out`}>
+      className={`${className} text-center p-8 bg-gray-50 rounded-lg transition-transform duration-300 ease-in-out`}
+    >
       {title && (
         <h4 className="text-blue-600 mb-4 text-2xl font-bold">{title}</h4>
       )}
